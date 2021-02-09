@@ -23,7 +23,14 @@ def open_file():
     browse_text.set("Loading...")
     file = askopenfile(parent=root, mode='rb', title="Choose a file", filetype=[("Pdf file", "*.pdf")])
     if file:
-        print("File was succesfully loaded")
+        read_pdf = PyPDF2.PdfFileReader(file)
+        page = read_pdf.getPage(0)
+        page_content = page.extractText()
+        
+        # Text box
+        text_box = tk.Text(root, height=10, width=50, padx=15, pady=15)
+        text_box.insert(1.0, page_content)
+        text_box.grid(column=1, row=3)
 
 # Browse button
 browse_text = tk.StringVar()
