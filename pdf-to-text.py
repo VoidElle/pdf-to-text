@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 root = tk.Tk()
 
 canvas = tk.Canvas(root, width=600, height=300)
-canvas.grid(columnspan=3)
+canvas.grid(columnspan=3, rowspan=3)
 
 # Logo
 logo = Image.open('logo.png')
@@ -13,5 +13,15 @@ logo = ImageTk.PhotoImage(logo)
 logo_label = tk.Label(image=logo)
 logo_label.image = logo
 logo_label.grid(column=1, row=0)
+
+# Instructions
+instructions = tk.Label(root, text="Select a PDF file on your computer to extract all its text", font="Raleway")
+instructions.grid(columnspan=3, column=0, row=1)
+
+# Browse button
+browse_text = tk.StringVar()
+browse_btn = tk.Button(root, textvariable=browse_text, font="Raleway", bg="#1D69AB", fg="white", height=2, width=15)
+browse_text.set("Browse")
+browse_btn.grid(column=1, row=2)
 
 root.mainloop()
