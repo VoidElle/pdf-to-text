@@ -5,6 +5,10 @@ from tkinter.filedialog import askopenfile
 
 root = tk.Tk()
 
+root.title("Pdf to Text")
+root.iconbitmap("logo.ico")
+root.resizable(False, False)
+
 canvas = tk.Canvas(root, width=600, height=300)
 canvas.grid(columnspan=3, rowspan=3)
 
@@ -33,6 +37,8 @@ def open_file():
         text_box.tag_configure("center", justify="center")
         text_box.tag_add("center", 1.0, "end")
         text_box.grid(column=1, row=3)
+
+        browse_text.set("Browse")
 
 # Browse button
 browse_text = tk.StringVar()
